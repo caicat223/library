@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caicat.library.mapper.UserMapper">
+
+    <select id="Login" resultType="com.caicat.library.entity.User">
+        select * from user where u_name=#{uName} and u_password=#{uPassword}
+    </select>
+</mapper>

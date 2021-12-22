@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caicat.library.mapper.BookMapper">
+    <insert id="insertBook" parameterType="com.caicat.library.entity.Book">
+        insert into book(bk_title,bk_author,bk_price,bk_publisher,bk_publish_date) value (#{bkTitle},#{bkAuthor},#{bkPrice},#{bkPublisher},#{bkPublishDate})
+    </insert>
+    <update id="updateBook">
+        update book set bk_title=#{bkTitle},bk_author=#{bkAuthor},bk_price=#{bkPrice},bk_publisher=#{bkPublisher},bk_publish_date=#{bkPublishDate} where bk_id=#{bkId}
+    </update>
+    <delete id="deleteBook">
+        delete from book where bk_id=#{id}
+    </delete>
+
+    <select id="getBookAll" resultType="com.caicat.library.entity.Book">
+        select * from book
+    </select>
+    <select id="selectBookById" resultType="com.caicat.library.entity.Book">
+        select * from book
+        <where>
+            <if test="bkId!=null">
+                bk_id=#{bkId}
+            </if>
+        </where>
+    </select>
+    <select id="selectBookByBody" resultType="com.caicat.library.entity.Book">
+        select * from book
+        <where>
+            <if test="bkTitle!=null and bkTitle!=' '">
+                bk_title=#{bkTitle}
+            </if>
+            <if test="bkAuthor!=null and bkAuthor!=' ' ">
+                bk_author=#{bkAuthor}
+            </if>
+            <if test="bkPrice!=null and bkPrice!=' ' ">
+                bk_author=#{bkPrice}
+            </if>
+            <if test="bkPublisher!=null and bkPublisher!=' '">
+                bk_publisher=#{bkPublisher}
+            </if>
+            <if test="bkPublishDate!=null and bkPublishDate!=' ' ">
+                bk_publish_date=#{bkPublishDate}
+            </if>
+            <if test="bkId!=null and bkId!=' ' ">
+                bk_id=#{bkId}
+            </if>
+        </where>
+    </select>
+</mapper>
